@@ -3,17 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
-    { label: "INICIO", href: "/", active: false },
-    { label: "ÁREAS DE PRÁCTICA", href: "/areas", active: true },
-    { label: "CULTURA", href: "/cultura", active: false },
-    { label: "EQUIPO", href: "/equipo", active: false },
-    { label: "CONTACTO", href: "/contacto", active: false },
-    { label: "PRO-BONO", href: "/pro-bono", active: false },
+    { label: "INICIO", href: "/" },
+    { label: "ÁREAS DE PRÁCTICA", href: "/areas" },
+    { label: "CULTURA", href: "/cultura" },
+    { label: "EQUIPO", href: "/equipo" },
+    { label: "CONTACTO", href: "/contacto" },
+    { label: "PRO-BONO", href: "/pro-bono" },
   ];
 
   const toggleMenu = () => {
@@ -42,17 +44,20 @@ export const Navbar = () => {
 
         {/* Desktop Navigation Menu */}
         <div className="hidden md:flex items-center gap-6 md:gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-white text-xs md:text-sm font-normal tracking-wide transition-colors hover:opacity-80 ${
-                item.active ? "underline underline-offset-4" : ""
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-white text-xs md:text-sm font-normal tracking-wide transition-colors hover:opacity-80 ${
+                  isActive ? "underline underline-offset-4" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Mobile Menu Button */}
@@ -95,18 +100,21 @@ export const Navbar = () => {
         }`}
       >
         <div className="flex flex-col pt-24 px-6 space-y-6">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={closeMenu}
-              className={`text-white text-base font-normal tracking-wide transition-colors hover:opacity-80 py-2 border-b border-white/10 ${
-                item.active ? "underline underline-offset-4 font-semibold" : ""
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className={`text-white text-base font-normal tracking-wide transition-colors hover:opacity-80 py-2 border-b border-white/10 ${
+                  isActive ? "underline underline-offset-4 font-semibold" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </nav>

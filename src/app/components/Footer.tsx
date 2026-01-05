@@ -26,7 +26,7 @@ export const Footer = () => {
                 Teléfonos
               </h2>
               <p className="text-base md:text-lg text-slate-300/90">
-                (81) 2721.0080 Y 81
+                (81) 2721.0080
               </p>
             </div>
           </div>

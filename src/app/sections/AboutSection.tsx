@@ -3,65 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const practiceAreas = [
-  {
-    id: 1,
-    title: "Corporativo",
-    description:
-      "Asesoramos a empresas nacionales e internacionales en la estructuración y ejecución de operaciones corporativas, incluyendo fusiones, adquisiciones, escisiones y reestructuraciones societarias. Brindamos apoyo integral en gobierno corporativo, cumplimiento normativo y gestión de riesgos legales.",
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 2,
-    title: "Litigio",
-    description:
-      "Representamos a nuestros clientes en procedimientos judiciales y arbitrales de alta complejidad. Contamos con amplia experiencia en litigios comerciales, civiles y administrativos, siempre buscando las mejores estrategias para proteger sus intereses.",
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 3,
-    title: "Fiscal",
-    description:
-      "Ofrecemos asesoría fiscal integral para optimizar la carga tributaria de nuestros clientes dentro del marco legal vigente. Diseñamos estructuras fiscales eficientes y representamos a empresas en controversias ante autoridades fiscales.",
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 4,
-    title: "Bienes Raíces",
-    description:
-      'Como parte de nuestros servicios principales, ofrecemos asesoría legal y gestión a desarrolladores inmobiliarios, incluyendo la obtención oportuna de licencias y permisos ante departamentos de Desarrollo Urbano locales y autoridades estatales y federales, según corresponda. Contamos con una amplia experiencia en desarrollos urbanos y rurales, incluidos aquellos relacionados con la propiedad común o rural ("ejidos"). Además, tenemos un extenso historial en la gestión de procedimientos legales que impugnan o restringen los derechos de los activos inmobiliarios de nuestros clientes.',
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 5,
-    title: "Laboral",
-    description:
-      "Brindamos asesoría laboral preventiva y correctiva a empresas de diversos sectores. Manejamos relaciones individuales y colectivas de trabajo, negociaciones sindicales, terminaciones laborales y representación en procedimientos ante autoridades laborales.",
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 6,
-    title: "Propiedad Intelectual",
-    description:
-      "Protegemos los activos intangibles de nuestros clientes mediante el registro y defensa de marcas, patentes, derechos de autor y secretos industriales. Ofrecemos estrategias integrales de protección y monetización de propiedad intelectual.",
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 7,
-    title: "Comercio Exterior",
-    description:
-      "Asesoramos en operaciones de comercio internacional, incluyendo importaciones, exportaciones, clasificación arancelaria y cumplimiento aduanero. Representamos a clientes en procedimientos ante autoridades aduaneras y en controversias comerciales internacionales.",
-    image: "/sobreNosotros.png",
-  },
-  {
-    id: 8,
-    title: "Energía",
-    description:
-      "Brindamos asesoría especializada en el sector energético, incluyendo proyectos de generación, transmisión y distribución de energía. Acompañamos a nuestros clientes en la obtención de permisos y en el cumplimiento del marco regulatorio aplicable.",
-    image: "/sobreNosotros.png",
-  },
-];
+import { motion, AnimatePresence } from "motion/react";
+import { practiceAreas } from "@/lib/practiceAreas";
 
 export default function AboutSection() {
   const [currentIndex, setCurrentIndex] = useState(3);
@@ -84,13 +27,24 @@ export default function AboutSection() {
     <section className="relative w-full h-screen overflow-hidden">
       {/* Fondo con imagen y overlay */}
       <div className="absolute inset-0">
-        <Image
-          src={currentArea.image}
-          alt={currentArea.title}
-          fill
-          className="object-cover"
-          priority
-        />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={currentArea.image}
+              alt={currentArea.title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        </AnimatePresence>
         <div className="absolute inset-0 bg-linear-to-r from-[#1a3a4a]/95 via-[#1a3a4a]/85 to-transparent" />
       </div>
 
@@ -105,24 +59,42 @@ export default function AboutSection() {
             </span>
 
             {/* Número y Título */}
-            <div className="flex items-baseline gap-4 mb-6">
-              <div className="flex flex-col text-slate-400 text-md font-light">
-                <span className="text-3xl font-normal text-slate-200">
-                  {String(currentIndex + 1).padStart(2, "0")}
-                </span>
-                <span className="text-slate-500 text-xl">
-                  /{String(practiceAreas.length).padStart(2, "0")}
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-100 tracking-tight">
-                {currentArea.title}
-              </h2>
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`title-${currentIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                className="flex items-baseline gap-4 mb-6"
+              >
+                <div className="flex flex-col text-slate-400 text-md font-light">
+                  <span className="text-3xl font-normal text-slate-200">
+                    {String(currentIndex + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-slate-500 text-xl">
+                    /{String(practiceAreas.length).padStart(2, "0")}
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-100 tracking-tight">
+                  {currentArea.title}
+                </h2>
+              </motion.div>
+            </AnimatePresence>
 
             {/* Descripción */}
-            <p className="text-base md:text-xl text-slate-300/90 leading-relaxed max-w-2xl mb-12">
-              {currentArea.description}
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={`description-${currentIndex}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+                className="text-base md:text-xl text-slate-300/90 leading-relaxed max-w-2xl mb-12"
+              >
+                {currentArea.description}
+              </motion.p>
+            </AnimatePresence>
 
             {/* Botones de navegación */}
             <div className="flex gap-3">
@@ -145,15 +117,24 @@ export default function AboutSection() {
 
           {/* Lado derecho - Imagen (aproximadamente 1/3) */}
           <div className="hidden lg:flex lg:w-1/3 h-full items-center justify-center relative">
-            <div className="relative w-full h-[70%] max-h-[600px]">
-              <Image
-                src={currentArea.image}
-                alt={currentArea.title}
-                fill
-                className="object-cover rounded-sm"
-                priority
-              />
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`image-${currentIndex}`}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="relative w-full h-[70%] max-h-[600px]"
+              >
+                <Image
+                  src={currentArea.image}
+                  alt={currentArea.title}
+                  fill
+                  className="object-cover rounded-sm"
+                  priority
+                />
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
