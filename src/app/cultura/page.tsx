@@ -2,175 +2,201 @@
 
 import { motion } from "motion/react";
 import { Footer } from "../components/Footer";
-import {
-  Target,
-  Users,
-  Lightbulb,
-  Award,
-  Heart,
-  Shield,
-} from "lucide-react";
 
 const values = [
   {
     id: 1,
     title: "Excelencia",
-    icon: Award,
     description:
       "Nos comprometemos a brindar servicios de la más alta calidad, superando las expectativas de nuestros clientes en cada proyecto.",
   },
   {
     id: 2,
     title: "Integridad",
-    icon: Shield,
     description:
       "Actuamos con honestidad, transparencia y ética profesional en todas nuestras relaciones y operaciones.",
   },
   {
     id: 3,
     title: "Compromiso",
-    icon: Heart,
     description:
       "Dedicamos nuestro máximo esfuerzo y atención a cada cliente, entendiendo que su éxito es nuestro éxito.",
   },
   {
     id: 4,
     title: "Innovación",
-    icon: Lightbulb,
     description:
       "Buscamos constantemente nuevas soluciones y enfoques creativos para abordar los desafíos legales de nuestros clientes.",
   },
   {
     id: 5,
     title: "Colaboración",
-    icon: Users,
     description:
       "Fomentamos un ambiente de trabajo en equipo donde cada miembro contribuye con su experiencia y perspectiva única.",
   },
   {
     id: 6,
     title: "Enfoque",
-    icon: Target,
     description:
       "Mantenemos una visión clara y estratégica, enfocándonos en los objetivos y resultados que importan a nuestros clientes.",
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
+  },
+};
+
 export default function CulturaPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh] md:h-[70vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a3a4a] to-slate-900" />
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="container mx-auto px-8 lg:px-12 xl:px-16 max-w-7xl text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-md tracking-[0.3em] text-slate-300 uppercase mb-4 block"
-            >
-              Nuestra Cultura
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-100 tracking-tight mb-6"
-            >
-              Valores y Principios
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-xl text-slate-300/90 max-w-2xl mx-auto leading-relaxed"
-            >
-              Nuestra cultura organizacional se fundamenta en valores sólidos que
-              guían cada decisión y acción en nuestro despacho.
-            </motion.p>
+      <section className="relative w-full min-h-[70vh] overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-[var(--gs-base)]" />
+        <div className="glow-spotlight glow-tl" />
+        
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+            <div className="max-w-3xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="gs-subheading block mb-6"
+              >
+                Nuestra Cultura
+              </motion.span>
+              
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl gs-heading mb-8"
+              >
+                Valores y Principios
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-base md:text-lg text-[var(--gs-text-secondary)] leading-relaxed max-w-xl"
+              >
+                Nuestra cultura organizacional se fundamenta en valores sólidos 
+                que guían cada decisión y acción en nuestro despacho.
+              </motion.p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Sección de Valores */}
-      <section className="relative w-full bg-gradient-to-b from-slate-900 via-[#1a3a4a] to-slate-900 py-20 md:py-32">
-        <div className="container mx-auto px-8 lg:px-12 xl:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <motion.div
-                  key={value.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-8 hover:bg-slate-800/70 hover:border-slate-600/50 transition-all duration-300"
-                >
-                  <div className="flex flex-col items-start space-y-4">
-                    <div className="w-14 h-14 rounded-full bg-[#1a3a4a]/50 flex items-center justify-center group-hover:bg-[#1a3a4a]/70 transition-colors duration-300">
-                      <Icon className="w-7 h-7 text-slate-300 group-hover:text-slate-100 transition-colors duration-300" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-light text-slate-100 mb-3 tracking-tight">
-                        {value.title}
-                      </h3>
-                      <p className="text-sm md:text-base text-slate-300/90 leading-relaxed">
-                        {value.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+      {/* Valores Grid */}
+      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
+        <div className="glow-spotlight glow-center" />
+        
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            {values.map((value, index) => (
+              <motion.article
+                key={value.id}
+                variants={itemVariants}
+                className="group gs-card rounded-lg p-8 md:p-10"
+              >
+                {/* Number */}
+                <span className="block text-5xl md:text-6xl font-extralight text-white/10 mb-6 group-hover:text-white/20 transition-colors">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl gs-heading mb-4">
+                  {value.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-sm md:text-base text-[var(--gs-text-secondary)] leading-relaxed">
+                  {value.description}
+                </p>
+              </motion.article>
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* Sección de Ambiente de Trabajo */}
-      <section className="relative w-full bg-gradient-to-b from-slate-900 to-[#1a3a4a] py-20 md:py-32">
-        <div className="container mx-auto px-8 lg:px-12 xl:px-16 max-w-7xl">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-light text-slate-100 tracking-tight mb-6">
+      {/* Ambiente de Trabajo */}
+      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
+        <div className="glow-spotlight glow-br" />
+        
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="gs-card rounded-lg p-8 md:p-12 lg:p-16">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-4xl lg:text-5xl gs-heading mb-8 text-center"
+              >
                 Ambiente de Trabajo
-              </h2>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-6 text-base md:text-lg text-slate-300/90 leading-relaxed"
-            >
-              <p>
-                En GlobalServ, creemos que un ambiente de trabajo positivo y
-                colaborativo es fundamental para brindar el mejor servicio a
-                nuestros clientes. Fomentamos un entorno donde cada miembro del
-                equipo puede crecer profesionalmente y contribuir con su
-                experiencia única.
-              </p>
-              <p>
-                Valoramos la diversidad de pensamiento, el aprendizaje
-                continuo y el equilibrio entre el trabajo y la vida personal.
-                Nuestro compromiso con la excelencia se refleja no solo en los
-                resultados que entregamos, sino también en cómo trabajamos
-                juntos para lograrlos.
-              </p>
-              <p>
-                Estamos dedicados a mantener una cultura de respeto mutuo,
-                comunicación abierta y apoyo constante, donde cada voz es
-                escuchada y cada contribución es valorada.
-              </p>
-            </motion.div>
-          </div>
+              </motion.h2>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="space-y-6 text-base md:text-lg text-[var(--gs-text-secondary)] leading-relaxed"
+              >
+                <p>
+                  En GlobalServ, creemos que un ambiente de trabajo positivo y
+                  colaborativo es fundamental para brindar el mejor servicio a
+                  nuestros clientes. Fomentamos un entorno donde cada miembro del
+                  equipo puede crecer profesionalmente y contribuir con su
+                  experiencia única.
+                </p>
+                <p>
+                  Valoramos la diversidad de pensamiento, el aprendizaje
+                  continuo y el equilibrio entre el trabajo y la vida personal.
+                  Nuestro compromiso con la excelencia se refleja no solo en los
+                  resultados que entregamos, sino también en cómo trabajamos
+                  juntos para lograrlos.
+                </p>
+                <p>
+                  Estamos dedicados a mantener una cultura de respeto mutuo,
+                  comunicación abierta y apoyo constante, donde cada voz es
+                  escuchada y cada contribución es valorada.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -178,4 +204,3 @@ export default function CulturaPage() {
     </>
   );
 }
-

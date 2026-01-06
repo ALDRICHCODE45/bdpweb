@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Footer } from "../components/Footer";
-import { MapPin, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactoPage() {
@@ -16,9 +15,7 @@ export default function ContactoPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí se puede agregar la lógica para enviar el formulario
     console.log("Formulario enviado:", formData);
-    // Reset form
     setFormData({
       name: "",
       email: "",
@@ -38,128 +35,125 @@ export default function ContactoPage() {
     });
   };
 
+  const contactInfo = [
+    {
+      label: "Dirección",
+      value:
+        "Av. de la Industria 300. Punto Central, Oficina 21. Colonia Veredalta San Pedro Garza García, Nuevo León CP. 66270",
+    },
+    {
+      label: "Correo",
+      value: "globalServ@gmail.com",
+    },
+    {
+      label: "Teléfono",
+      value: "(81) 2721.0080",
+    },
+  ];
+
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1a3a4a] to-slate-900" />
-        <div className="relative z-10 h-full flex items-center justify-center">
-          <div className="container mx-auto px-8 lg:px-12 xl:px-16 max-w-7xl text-center">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-md tracking-[0.3em] text-slate-300 uppercase mb-4 block"
-            >
-              Contacto
-            </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-light text-slate-100 tracking-tight mb-6"
-            >
-              Estemos en Contacto
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base md:text-xl text-slate-300/90 max-w-2xl mx-auto leading-relaxed"
-            >
-              Estamos aquí para ayudarte. Contáctanos y te responderemos a la
-              brevedad posible.
-            </motion.p>
+      <section className="relative w-full min-h-[60vh] overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-[var(--gs-base)]" />
+        <div className="glow-spotlight glow-tl" />
+        
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+            <div className="max-w-3xl">
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="gs-subheading block mb-6"
+              >
+                Contacto
+              </motion.span>
+              
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl gs-heading mb-8"
+              >
+                Estemos en Contacto
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-base md:text-lg text-[var(--gs-text-secondary)] leading-relaxed max-w-xl"
+              >
+                Estamos aquí para ayudarte. Contáctanos y te responderemos 
+                a la brevedad posible.
+              </motion.p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Sección de Contacto */}
-      <section className="relative w-full bg-gradient-to-b from-slate-900 via-[#1a3a4a] to-slate-900 py-20 md:py-32">
-        <div className="container mx-auto px-8 lg:px-12 xl:px-16 max-w-7xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
-            {/* Información de Contacto */}
+      {/* Contact Section */}
+      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
+        <div className="glow-spotlight glow-center" />
+        
+        <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-20">
+            {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-8"
             >
-              <div>
-                <h2 className="text-3xl md:text-4xl font-light text-slate-100 mb-8 tracking-tight">
-                  Información de Contacto
-                </h2>
-                <p className="text-base md:text-lg text-slate-300/90 leading-relaxed mb-8">
-                  Puedes contactarnos a través de cualquiera de los siguientes
-                  medios. Estamos disponibles para atender tus consultas y
-                  necesidades legales.
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#1a3a4a]/50 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-slate-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-light text-slate-100 mb-2">
-                      Dirección
-                    </h3>
-                    <p className="text-base text-slate-300/90 leading-relaxed">
-                      Av. de la Industria 300. Punto Central, Oficina 21.
-                      Colonia Veredalta San Pedro Garza García, Nuevo León CP.
-                      66270
+              <h2 className="text-2xl md:text-3xl gs-heading mb-12">
+                Información de Contacto
+              </h2>
+              
+              <div className="space-y-10">
+                {contactInfo.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="group"
+                  >
+                    {/* Label */}
+                    <span className="block text-xs tracking-[0.2em] uppercase text-[var(--gs-text-muted)] mb-2">
+                      {item.label}
+                    </span>
+                    
+                    {/* Value */}
+                    <p className="text-base md:text-lg text-[var(--gs-text-primary)] leading-relaxed">
+                      {item.value}
                     </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#1a3a4a]/50 flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-slate-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-light text-slate-100 mb-2">
-                      Correo Electrónico
-                    </h3>
-                    <p className="text-base text-slate-300/90">
-                      globalServ@gmail.com
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#1a3a4a]/50 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-slate-300" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-light text-slate-100 mb-2">
-                      Teléfono
-                    </h3>
-                    <p className="text-base text-slate-300/90">
-                      (81) 2721.0080
-                    </p>
-                  </div>
-                </div>
+                    
+                    {/* Subtle Divider */}
+                    <div className="gs-divider mt-6" />
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
 
-            {/* Formulario de Contacto */}
+            {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-lg p-8 md:p-10">
-                <h2 className="text-3xl md:text-4xl font-light text-slate-100 mb-8 tracking-tight">
+              <div className="gs-card rounded-lg p-8 md:p-10">
+                <h2 className="text-2xl md:text-3xl gs-heading mb-8">
                   Envíanos un Mensaje
                 </h2>
+                
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-normal text-slate-300 mb-2"
+                      className="block text-xs tracking-[0.15em] uppercase text-[var(--gs-text-muted)] mb-3"
                     >
                       Nombre Completo
                     </label>
@@ -170,52 +164,54 @@ export default function ContactoPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors"
+                      className="w-full px-4 py-3 gs-input rounded-md"
                       placeholder="Tu nombre"
                     />
                   </div>
 
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-normal text-slate-300 mb-2"
-                    >
-                      Correo Electrónico
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block text-xs tracking-[0.15em] uppercase text-[var(--gs-text-muted)] mb-3"
+                      >
+                        Correo Electrónico
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full px-4 py-3 gs-input rounded-md"
+                        placeholder="tu@email.com"
+                      />
+                    </div>
 
-                  <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-normal text-slate-300 mb-2"
-                    >
-                      Teléfono
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors"
-                      placeholder="(81) 1234-5678"
-                    />
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-xs tracking-[0.15em] uppercase text-[var(--gs-text-muted)] mb-3"
+                      >
+                        Teléfono
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="w-full px-4 py-3 gs-input rounded-md"
+                        placeholder="(81) 1234-5678"
+                      />
+                    </div>
                   </div>
 
                   <div>
                     <label
                       htmlFor="subject"
-                      className="block text-sm font-normal text-slate-300 mb-2"
+                      className="block text-xs tracking-[0.15em] uppercase text-[var(--gs-text-muted)] mb-3"
                     >
                       Asunto
                     </label>
@@ -226,7 +222,7 @@ export default function ContactoPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors"
+                      className="w-full px-4 py-3 gs-input rounded-md"
                       placeholder="Asunto de tu consulta"
                     />
                   </div>
@@ -234,7 +230,7 @@ export default function ContactoPage() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-normal text-slate-300 mb-2"
+                      className="block text-xs tracking-[0.15em] uppercase text-[var(--gs-text-muted)] mb-3"
                     >
                       Mensaje
                     </label>
@@ -244,18 +240,20 @@ export default function ContactoPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700/50 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-slate-600 transition-colors resize-none"
+                      rows={5}
+                      className="w-full px-4 py-3 gs-input rounded-md resize-none"
                       placeholder="Escribe tu mensaje aquí..."
                     />
                   </div>
 
-                  <button
+                  <motion.button
                     type="submit"
-                    className="w-full px-6 py-3 bg-[#1a3a4a] hover:bg-[#1a3a4a]/80 text-slate-100 font-normal tracking-wide rounded-lg transition-colors duration-300"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
+                    className="w-full px-6 py-4 bg-[var(--gs-accent)] hover:bg-[var(--gs-accent)]/80 text-[var(--gs-text-primary)] text-sm tracking-[0.1em] uppercase rounded-md transition-all duration-300"
                   >
                     Enviar Mensaje
-                  </button>
+                  </motion.button>
                 </form>
               </div>
             </motion.div>
@@ -267,4 +265,3 @@ export default function ContactoPage() {
     </>
   );
 }
-
