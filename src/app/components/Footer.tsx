@@ -32,11 +32,11 @@ export const Footer = () => {
             >
               <Link href="/">
                 <Image
-                  src="/logos/LogoDef.png"
-                  width={80}
-                  height={80}
+                  src="/logos/GlobalLogo.webp"
+                  width={1832}
+                  height={665}
                   alt="GlobalServ"
-                  className="w-16 h-auto mb-6 opacity-80 hover:opacity-100 transition-opacity"
+                  className="h-10 w-auto mb-6 opacity-80 hover:opacity-100 transition-opacity"
                 />
               </Link>
               <p className="text-sm text-[var(--gs-text-muted)] leading-relaxed max-w-xs">

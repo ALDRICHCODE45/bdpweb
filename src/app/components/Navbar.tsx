@@ -54,11 +54,11 @@ export const Navbar = () => {
             transition={{ duration: 0.2 }}
           >
             <Image
-              src="/logos/LogoDef.png"
-              width={100}
-              height={100}
+              src="/logos/GlobalLogo.webp"
+              width={1832}
+              height={665}
               alt="GlobalServ"
-              className="w-16 h-auto md:w-20"
+              className="h-16 w-auto md:h-[72px]"
               priority
             />
           </motion.div>
