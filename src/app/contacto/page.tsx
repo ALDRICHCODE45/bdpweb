@@ -39,7 +39,7 @@ export default function ContactoPage() {
     {
       label: "Dirección",
       value:
-        "Global Serv VJ. Prado Sur 245 P.B. Lomas de Chapultepec, Miguel Hidalgo, CdMx.",
+        "Global Serv VJ. Prado Norte 245 P.B. Lomas de Chapultepec, Miguel Hidalgo, CdMx.",
     },
     {
       label: "Correo",
