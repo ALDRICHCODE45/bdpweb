@@ -43,11 +43,11 @@ export default function ContactoPage() {
     },
     {
       label: "Correo",
-      value: "globalServ@gmail.com",
+      value: "contacto@globalservmx.com",
     },
     {
       label: "Teléfono",
-      value: "(81) 2721.0080",
+      value: "+52 55 9429 2460",
     },
   ];
 

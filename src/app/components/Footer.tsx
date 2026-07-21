@@ -80,10 +80,10 @@ export const Footer = () => {
               </span>
               <div className="space-y-4">
                 <p className="text-sm text-[var(--gs-text-secondary)]">
-                  globalServ@gmail.com
+                  contacto@globalservmx.com
                 </p>
                 <p className="text-sm text-[var(--gs-text-secondary)]">
-                  (81) 2721.0080
+                  +52 55 9429 2460
                 </p>
               </div>
             </motion.div>
