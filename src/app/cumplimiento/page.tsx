@@ -4,6 +4,14 @@ import { useState, type ChangeEvent, type FormEvent } from "react";
 import { notFound } from "next/navigation";
 import { motion } from "motion/react";
 import { WordRotate } from "@/components/ui/word-rotate";
+import {
+  advantages,
+  services,
+  steps,
+  team,
+} from "@/lib/cumplimientoData";
+import { ServiceCard } from "./components/ServiceCard";
+import { Timeline } from "./components/Timeline";
 import { Footer } from "../components/Footer";
 
 const taglineWords = [
@@ -233,6 +241,165 @@ export default function CumplimientoPage() {
                 </li>
               </ul>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Servicios */}
+      <section
+        id="servicios"
+        className="relative w-full scroll-mt-20 bg-[var(--gs-base)] py-24 md:py-32"
+      >
+        <div className="glow-spotlight glow-center" />
+        <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-14 max-w-3xl md:mb-20"
+          >
+            <span className="gs-subheading mb-6 block">Cómo te ayudamos</span>
+            <h2 className="text-3xl gs-heading mb-6 md:text-4xl lg:text-5xl">
+              Cumplimiento que protege la operación.
+            </h2>
+            <p className="text-base leading-relaxed text-[var(--gs-text-secondary)] md:text-lg">
+              Seis frentes especializados para prevenir exposición, fortalecer la
+              evidencia y responder con estrategia cuando una fiscalización ya
+              comenzó.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3"
+          >
+            {services.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Ventajas Competitivas */}
+      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
+        <div className="glow-spotlight glow-br opacity-40" />
+        <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-14 max-w-3xl md:mb-20"
+          >
+            <span className="gs-subheading mb-6 block">
+              Ventajas competitivas
+            </span>
+            <h2 className="text-3xl gs-heading md:text-4xl lg:text-5xl">
+              Del requisito al control que sí funciona.
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-4"
+          >
+            {advantages.map((advantage, index) => (
+              <motion.article
+                key={advantage.id}
+                variants={itemVariants}
+                className="group gs-card rounded-lg p-8 md:p-10"
+              >
+                <span className="mb-6 block text-5xl font-extralight text-white/10 transition-colors group-hover:text-white/20 md:text-6xl">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="text-xl gs-heading mb-4 md:text-2xl">
+                  {advantage.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--gs-text-secondary)] md:text-base">
+                  {advantage.description}
+                </p>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Metodología */}
+      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
+        <div className="glow-spotlight glow-tl opacity-30" />
+        <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-16 max-w-3xl md:mb-24"
+          >
+            <span className="gs-subheading mb-6 block">Metodología</span>
+            <h2 className="text-3xl gs-heading mb-6 md:text-4xl lg:text-5xl">
+              Una ruta clara de diagnóstico a resultado.
+            </h2>
+            <p className="text-base leading-relaxed text-[var(--gs-text-secondary)] md:text-lg">
+              Trabajamos por etapas para que cada hallazgo tenga responsable,
+              evidencia y una acción concreta de tratamiento.
+            </p>
+          </motion.div>
+          <Timeline steps={steps} />
+        </div>
+      </section>
+
+      {/* Equipo */}
+      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
+        <div className="glow-spotlight glow-center opacity-40" />
+        <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mb-14 max-w-3xl md:mb-20"
+          >
+            <span className="gs-subheading mb-6 block">Equipo especializado</span>
+            <h2 className="text-3xl gs-heading mb-6 md:text-4xl lg:text-5xl">
+              Perspectivas distintas, una sola estrategia.
+            </h2>
+            <p className="text-base leading-relaxed text-[var(--gs-text-secondary)] md:text-lg">
+              Integramos conocimiento jurídico, auditoría y gestión de riesgos
+              para acompañar cada decisión con profundidad técnica.
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-4"
+          >
+            {team.map((member) => (
+              <motion.article
+                key={member.id}
+                variants={itemVariants}
+                className="gs-card rounded-lg p-8 md:p-10"
+              >
+                <span className="cumplimiento-accent-text mb-5 block text-xs uppercase tracking-[0.18em]">
+                  {member.role}
+                </span>
+                <h3 className="text-xl gs-heading mb-5 md:text-2xl">
+                  {member.name}
+                </h3>
+                <p className="text-sm leading-relaxed text-[var(--gs-text-secondary)] md:text-base">
+                  {member.description}
+                </p>
+              </motion.article>
+            ))}
           </motion.div>
         </div>
       </section>
