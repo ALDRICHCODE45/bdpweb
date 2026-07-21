@@ -39,7 +39,7 @@ export default function ContactoPage() {
     {
       label: "Dirección",
       value:
-        "Av. de la Industria 300. Punto Central, Oficina 21. Colonia Veredalta San Pedro Garza García, Nuevo León CP. 66270",
+        "Global Serv VJ. Prado Sur 245 P.B. Lomas de Chapultepec, Miguel Hidalgo, CdMx.",
     },
     {
       label: "Correo",

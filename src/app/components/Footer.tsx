@@ -99,11 +99,10 @@ export const Footer = () => {
                 Dirección
               </span>
               <address className="text-sm text-[var(--gs-text-secondary)] leading-relaxed not-italic">
-                Av. de la Industria 300<br />
-                Punto Central, Oficina 21<br />
-                Colonia Veredalta<br />
-                San Pedro Garza García, N.L.<br />
-                CP. 66270
+                Global Serv VJ<br />
+                Prado Sur 245 P.B.<br />
+                Lomas de Chapultepec<br />
+                Miguel Hidalgo, CdMx.
               </address>
             </motion.div>
           </div>
