@@ -226,7 +226,7 @@ export default function ProBonoPage() {
               >
                 <blockquote className="text-center">
                   <p className="text-xl md:text-2xl font-light text-[var(--gs-text-primary)] italic">
-                    "La justicia no es solo para quienes pueden pagarla"
+                    &ldquo;La justicia no es solo para quienes pueden pagarla&rdquo;
                   </p>
                 </blockquote>
               </motion.div>
