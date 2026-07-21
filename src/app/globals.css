@@ -235,3 +235,18 @@
 .stagger-4 { animation-delay: 0.4s; }
 .stagger-5 { animation-delay: 0.5s; }
 .stagger-6 { animation-delay: 0.6s; }
+
+/* Cumplimiento landing accent — intentionally scoped to the feature page. */
+.cumplimiento-accent-text {
+  color: #4ade80;
+}
+
+.cumplimiento-accent-glow {
+  background: radial-gradient(
+    circle,
+    rgba(74, 222, 128, 0.18) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  pointer-events: none;
+}
