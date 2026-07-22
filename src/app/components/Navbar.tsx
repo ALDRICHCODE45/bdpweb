@@ -23,9 +23,7 @@ export const Navbar = () => {
   const navItems = [
     { label: "Inicio", href: "/" },
     { label: "Áreas", href: "/areas" },
-    ...(process.env.NEXT_PUBLIC_FEATURE_CUMPLIMIENTO === "true"
-      ? [{ label: "Cumplimiento", href: "/cumplimiento" }]
-      : []),
+    { label: "Cumplimiento", href: "/cumplimiento" },
     { label: "Cultura", href: "/cultura" },
     { label: "Equipo", href: "/equipo" },
     { label: "Contacto", href: "/contacto" },
