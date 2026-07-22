@@ -1,9 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { practiceAreas } from "@/lib/practiceAreas";
+
+type LinkedPhrase = { text: string; href: string };
+
+const escapeRegExp = (value: string) =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+function renderDescription(
+  description: string,
+  linkedPhrases?: LinkedPhrase[],
+): ReactNode {
+  if (!linkedPhrases || linkedPhrases.length === 0) return description;
+
+  const pattern = new RegExp(
+    `(${linkedPhrases.map((p) => escapeRegExp(p.text)).join("|")})`,
+    "g",
+  );
+  const parts = description.split(pattern);
+
+  return parts.map((part, index) => {
+    const match = linkedPhrases.find((p) => p.text === part);
+    if (!match) return <span key={index}>{part}</span>;
+    return (
+      <Link
+        key={index}
+        href={match.href}
+        className="underline underline-offset-4 decoration-white/30 transition-colors hover:text-white hover:decoration-white"
+      >
+        {part}
+      </Link>
+    );
+  });
+}
 
 export default function AboutSection() {
   const [currentIndex, setCurrentIndex] = useState(3);
@@ -106,7 +139,7 @@ export default function AboutSection() {
                   transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                   className="text-base md:text-lg text-[var(--gs-text-secondary)] leading-relaxed max-w-2xl"
                 >
-                  {currentArea.description}
+                  {renderDescription(currentArea.description, currentArea.linkedPhrases)}
                 </motion.p>
               </AnimatePresence>
 

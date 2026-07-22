@@ -1,8 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { practiceAreas } from "@/lib/practiceAreas";
 import { Footer } from "../components/Footer";
@@ -28,38 +26,6 @@ const itemVariants = {
     },
   },
 };
-
-type LinkedPhrase = { text: string; href: string };
-
-const escapeRegExp = (value: string) =>
-  value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-function renderDescription(
-  description: string,
-  linkedPhrases?: LinkedPhrase[],
-): ReactNode {
-  if (!linkedPhrases || linkedPhrases.length === 0) return description;
-
-  const pattern = new RegExp(
-    `(${linkedPhrases.map((p) => escapeRegExp(p.text)).join("|")})`,
-    "g",
-  );
-  const parts = description.split(pattern);
-
-  return parts.map((part, index) => {
-    const match = linkedPhrases.find((p) => p.text === part);
-    if (!match) return <span key={index}>{part}</span>;
-    return (
-      <Link
-        key={index}
-        href={match.href}
-        className="underline underline-offset-4 decoration-white/30 transition-colors hover:text-white hover:decoration-white"
-      >
-        {part}
-      </Link>
-    );
-  });
-}
 
 export default function AreasPage() {
   return (
@@ -152,7 +118,7 @@ export default function AreasPage() {
                     {area.title}
                   </h3>
                   <p className="text-sm md:text-base text-[var(--gs-text-secondary)] leading-relaxed line-clamp-3">
-                    {renderDescription(area.description, area.linkedPhrases)}
+                    {area.description}
                   </p>
                 </div>
               </motion.article>
