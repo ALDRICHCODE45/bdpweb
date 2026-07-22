@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
+import Image from "next/image";
 
 import { motion } from "motion/react";
 import { WordRotate } from "@/components/ui/word-rotate";
@@ -118,11 +119,23 @@ export default function CumplimientoPage() {
   return (
     <main className="cumplimiento-page">
       {/* Hero Section */}
-      <section className="relative flex min-h-[70vh] w-full items-center overflow-hidden">
-        <div className="absolute inset-0 bg-[var(--gs-base)]" />
-        <div className="glow-spotlight glow-tl" />
-        <div className="glow-spotlight glow-br opacity-30" />
-        <div className="cumplimiento-accent-glow absolute -right-24 top-1/4 h-80 w-80 rounded-full opacity-60" />
+      <section className="relative flex min-h-[85vh] w-full items-center overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/Herocumplimiento/HeroCumplimiento.webp"
+            alt=""
+            aria-hidden="true"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          {/* Overlay gradiente para legibilidad */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--gs-base)] via-[var(--gs-base)]/75 to-transparent" />
+          <div className="absolute inset-0 bg-[var(--gs-base)]/40" />
+        </div>
+        <div className="glow-spotlight glow-tl opacity-30" />
+        <div className="cumplimiento-accent-glow absolute right-0 top-1/4 h-96 w-96 rounded-full opacity-15" />
 
         <div className="relative z-10 w-full">
           <div className="container mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
