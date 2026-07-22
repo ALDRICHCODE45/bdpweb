@@ -32,24 +32,6 @@ export interface TimelineStep {
   description: string;
 }
 
-export interface CaseStudy {
-  id: string;
-  title: string;
-  sector: string;
-  before: {
-    label: string;
-    figure: string;
-    detail: string;
-  };
-  after: {
-    label: string;
-    figure: string;
-    detail: string;
-  };
-  context: string;
-  outcome: string;
-}
-
 export interface TeamMember {
   id: string;
   name: string;
@@ -221,66 +203,6 @@ export const steps: TimelineStep[] = [
 ];
 
 export const timelineSteps = steps;
-
-export const cases: CaseStudy[] = [
-  {
-    id: "construccion",
-    title: "Observaciones ASF en construcción",
-    sector: "Sector construcción",
-    before: {
-      label: "Exposición inicial",
-      figure: "$15 MDP",
-      detail: "Observaciones de la ASF con impacto potencial en la operación.",
-    },
-    after: {
-      label: "Resultado",
-      figure: "90% resuelto",
-      detail: "Observaciones atendidas y responsabilidad evitada.",
-    },
-    context:
-      "Reconstruimos la trazabilidad de contratos, entregables y autorizaciones para responder técnicamente a cada observación.",
-    outcome:
-      "La intervención permitió resolver 90% de las observaciones y evitar que el expediente derivara en responsabilidad administrativa.",
-  },
-  {
-    id: "farmaceutica",
-    title: "Integridad en empresa farmacéutica",
-    sector: "Industria farmacéutica",
-    before: {
-      label: "Punto de partida",
-      figure: "Sin compliance",
-      detail: "Controles dispersos y exposición frente a obligaciones sectoriales.",
-    },
-    after: {
-      label: "Resultado",
-      figure: "Programa certificado",
-      detail: "Sistema de cumplimiento documentado y operable.",
-    },
-    context:
-      "Convertimos obligaciones regulatorias, riesgos de terceros y canales de denuncia en un programa de integridad con responsables claros.",
-    outcome:
-      "La organización obtuvo un programa certificado y una estructura de prevención que funciona como factor mitigante.",
-  },
-  {
-    id: "servidor-publico",
-    title: "Defensa de persona servidora pública",
-    sector: "Responsabilidad administrativa",
-    before: {
-      label: "Riesgo acumulado",
-      figure: "10 años",
-      detail: "Exposición derivada de una actuación administrativa de larga data.",
-    },
-    after: {
-      label: "Resultado",
-      figure: "Sanción mínima",
-      detail: "Conducta negociada como no grave con respuesta proporcional.",
-    },
-    context:
-      "Analizamos la temporalidad, la evidencia y el grado de participación para construir una defensa centrada en proporcionalidad y debido proceso.",
-    outcome:
-      "La estrategia permitió negociar la clasificación como falta no grave y obtener la sanción mínima aplicable.",
-  },
-];
 
 export const team: TeamMember[] = [
   {

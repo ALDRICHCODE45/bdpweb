@@ -7,14 +7,12 @@ import { motion } from "motion/react";
 import { WordRotate } from "@/components/ui/word-rotate";
 import {
   advantages,
-  cases,
   faq,
   services,
   steps,
   team,
 } from "@/lib/cumplimientoData";
 import { AccordionFAQ } from "./components/AccordionFAQ";
-import { BeforeAfterSlider } from "./components/BeforeAfterSlider";
 import { ServiceCard } from "./components/ServiceCard";
 import { Timeline } from "./components/Timeline";
 import { Footer } from "../components/Footer";
@@ -366,63 +364,6 @@ export default function CumplimientoPage() {
             </p>
           </motion.div>
           <Timeline steps={steps} />
-        </div>
-      </section>
-
-      {/* Casos de Aplicación */}
-      <section className="relative w-full bg-[var(--gs-base)] py-24 md:py-32">
-        <div className="glow-spotlight glow-br opacity-40" />
-        <div className="container relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className="mb-14 max-w-3xl md:mb-20"
-          >
-            <span className="gs-subheading mb-6 block">
-              Casos de aplicación práctica
-            </span>
-            <h2 className="text-3xl gs-heading mb-6 md:text-4xl lg:text-5xl">
-              El antes y después de una estrategia oportuna.
-            </h2>
-            <p className="text-base leading-relaxed text-[var(--gs-text-secondary)] md:text-lg">
-              Resultados reales presentados de forma anónima para proteger la
-              confidencialidad de nuestros clientes.
-            </p>
-          </motion.div>
-
-          <div className="space-y-10 md:space-y-14">
-            {cases.map((caseStudy, index) => (
-              <motion.article
-                key={caseStudy.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.08,
-                  ease: [0.4, 0, 0.2, 1],
-                }}
-                className="gs-card rounded-lg p-6 md:p-10"
-              >
-                <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-                  <div>
-                    <span className="cumplimiento-accent-text text-xs uppercase tracking-[0.18em]">
-                      {caseStudy.sector}
-                    </span>
-                    <h3 className="mt-3 text-2xl gs-heading md:text-3xl">
-                      {caseStudy.title}
-                    </h3>
-                  </div>
-                  <span className="text-xs uppercase tracking-[0.15em] text-white/35">
-                    Caso {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
-                <BeforeAfterSlider caseStudy={caseStudy} />
-              </motion.article>
-            ))}
-          </div>
         </div>
       </section>
 
