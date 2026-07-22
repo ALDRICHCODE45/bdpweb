@@ -5,6 +5,9 @@ export const practiceAreas = [
     description:
       "Asesoramos a empresas nacionales e internacionales en la estructuración y ejecución de operaciones corporativas, incluyendo fusiones, adquisiciones, escisiones y reestructuraciones societarias. Brindamos apoyo integral en gobierno corporativo, cumplimiento normativo y gestión de riesgos legales.",
     image: "/areasPractica/area1.png",
+    linkedPhrases: [
+      { text: "cumplimiento normativo", href: "/cumplimiento" },
+    ],
   },
   {
     id: 2,
