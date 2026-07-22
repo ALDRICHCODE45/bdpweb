@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
-import { notFound } from "next/navigation";
+
 import { motion } from "motion/react";
 import { WordRotate } from "@/components/ui/word-rotate";
 import {
@@ -61,17 +61,13 @@ const initialForm: DiagnosticForm = {
 };
 
 export default function CumplimientoPage() {
-  if (process.env.NEXT_PUBLIC_FEATURE_CUMPLIMIENTO !== "true") {
-    notFound();
-  }
-
   const [form, setForm] = useState<DiagnosticForm>(initialForm);
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
@@ -112,7 +108,7 @@ export default function CumplimientoPage() {
       setForm(initialForm);
     } catch {
       setError(
-        "No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos."
+        "No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.",
       );
     } finally {
       setIsSubmitting(false);
@@ -209,10 +205,10 @@ export default function CumplimientoPage() {
               <div className="space-y-6 text-base leading-relaxed text-[var(--gs-text-secondary)] md:text-lg">
                 <p>
                   Las obligaciones de integridad, control interno y rendición de
-                  cuentas atraviesan cada decisión relevante de una organización.
-                  Una falla documental o un control que nadie puede demostrar
-                  puede convertirse en observaciones, sanciones y pérdida de
-                  confianza.
+                  cuentas atraviesan cada decisión relevante de una
+                  organización. Una falla documental o un control que nadie
+                  puede demostrar puede convertirse en observaciones, sanciones
+                  y pérdida de confianza.
                 </p>
                 <p>
                   Cumplir no significa llenar formatos: significa conocer la
@@ -237,7 +233,8 @@ export default function CumplimientoPage() {
                   Diagnóstico jurídico y operativo con prioridades claras.
                 </li>
                 <li className="border-l border-white/15 pl-5">
-                  Controles y políticas alineados con el riesgo real del negocio.
+                  Controles y políticas alineados con el riesgo real del
+                  negocio.
                 </li>
                 <li className="border-l border-white/15 pl-5">
                   Acompañamiento preventivo y defensa cuando la fiscalización ya
@@ -268,9 +265,9 @@ export default function CumplimientoPage() {
               Cumplimiento que protege la operación.
             </h2>
             <p className="text-base leading-relaxed text-[var(--gs-text-secondary)] md:text-lg">
-              Seis frentes especializados para prevenir exposición, fortalecer la
-              evidencia y responder con estrategia cuando una fiscalización ya
-              comenzó.
+              Seis frentes especializados para prevenir exposición, fortalecer
+              la evidencia y responder con estrategia cuando una fiscalización
+              ya comenzó.
             </p>
           </motion.div>
 
@@ -427,7 +424,9 @@ export default function CumplimientoPage() {
             transition={{ duration: 0.6 }}
             className="mb-14 max-w-3xl md:mb-20"
           >
-            <span className="gs-subheading mb-6 block">Equipo especializado</span>
+            <span className="gs-subheading mb-6 block">
+              Equipo especializado
+            </span>
             <h2 className="text-3xl gs-heading mb-6 md:text-4xl lg:text-5xl">
               Perspectivas distintas, una sola estrategia.
             </h2>
@@ -476,7 +475,9 @@ export default function CumplimientoPage() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
             >
-              <span className="gs-subheading mb-6 block">Preguntas frecuentes</span>
+              <span className="gs-subheading mb-6 block">
+                Preguntas frecuentes
+              </span>
               <h2 className="text-3xl gs-heading mb-6 md:text-4xl">
                 Claridad para decidir el siguiente paso.
               </h2>
@@ -511,7 +512,9 @@ export default function CumplimientoPage() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6 }}
             >
-              <span className="gs-subheading mb-6 block">Diagnóstico exprés</span>
+              <span className="gs-subheading mb-6 block">
+                Diagnóstico exprés
+              </span>
               <h2 className="text-3xl gs-heading mb-6 md:text-4xl">
                 Empecemos por el riesgo que hoy te quita el sueño.
               </h2>
