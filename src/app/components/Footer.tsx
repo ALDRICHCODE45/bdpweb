@@ -101,9 +101,8 @@ export const Footer = () => {
               </span>
               <address className="text-sm text-[var(--gs-text-secondary)] leading-relaxed not-italic">
                 Global Serv VJ<br />
-                Prado Norte 245 P.B.<br />
-                Lomas de Chapultepec<br />
-                Miguel Hidalgo, CdMx.
+                AV FUENTES 41 A 1201 FTE DE MOLINOS LOMAS DETECCAMACHALCO C.P.53950<br />
+                NAUCALPAN DE JUAREZ,MEX.
               </address>
             </motion.div>
           </div>

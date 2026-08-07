@@ -39,7 +39,7 @@ export default function ContactoPage() {
     {
       label: "Dirección",
       value:
-        "Global Serv VJ. Prado Norte 245 P.B. Lomas de Chapultepec, Miguel Hidalgo, CdMx.",
+        "Global Serv VJ. AV FUENTES 41 A 1201 FTE DE MOLINOS LOMAS DETECCAMACHALCO C.P.53950 NAUCALPAN DE JUAREZ,MEX.",
     },
     {
       label: "Correo",
