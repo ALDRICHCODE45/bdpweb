@@ -116,7 +116,7 @@ export const Footer = () => {
             </p>
             <div className="flex items-center gap-6">
               <Link
-                href="/contacto"
+                href="/privacidad"
                 className="text-xs text-[var(--gs-text-muted)] hover:text-[var(--gs-text-secondary)] transition-colors"
               >
                 Aviso de Privacidad
